@@ -1,65 +1,349 @@
 <!DOCTYPE html>
 <html lang="en">
-<!---Aren't you the Curious one. Well, this is the code; feel free to look it up, copy it, have fun with it. Have a nice day!-->
-
 <head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale = 1, user-scalable = no" />
-	<meta name="theme-color" content="#314652" />
-	<title>Shashank Shirol | Home</title>
-	<link href="https://fonts.googleapis.com/css?family=Thasadith" rel="stylesheet">
-	<link rel="stylesheet" type="text/css" href="css/style.css">
-	<link rel="icon" type="image/png" href="images/icon.png" />
-	<link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
-	<link href="https://fonts.googleapis.com/css?family=Caveat" rel="stylesheet">
-	<script src="https://use.fontawesome.com/d1341f9b7a.js"></script>
-	<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
-	 crossorigin="anonymous"></script>
-	<script src="js/script.js" type="text/javascript"></script>
-	<script>
-		$(document).ready(function(){
-			$('.menu').click(function() {
-				$('.navUL').toggleClass('mobView');
-			})
-		})
-	</script>
+
+  <meta charset="UTF-8">
+  <meta content="IE=edge" http-equiv="X-UA-Compatible">
+  <meta content="width=device-width,initial-scale=1" name="viewport">
+  <meta content="description" name="description">
+  <meta name="google" content="notranslate" />
+
+  <!-- Disable tap highlight on IE -->
+  <meta name="msapplication-tap-highlight" content="no">
+  
+  <link rel="icon" type="image/png" href="images/icon.png" />
+
+  <title>Shashank Shirol</title>  
+
+  <link href="./main.d8e0d294.css" rel="stylesheet">
+
+  <style type="text/css">
+  	#icons:hover {
+  		color: #ff0060;
+  	}
+  </style>
+
 </head>
 
-<body onload="startAnimation('name')">
-	<div id="container">
-		<header>
-			<div class="toggle"><img id="mobView_name" src="images/logo.png" alt="logo_png"/><button class="menu">menu<span style="font-size: 0.6em">▼</span></button></div>
-			<nav>
-				<ul class="navUL">
-					<li><a href="#" class="active" onclick="this.blur()">Home</a></li>
-					<li><a href="about.html" onclick="this.blur()">About</a></li>
-					<li><a href="projects.html" onclick="this.blur()">Projects</a></li>
-					<li><a href="achievements.html" onclick="this.blur()">Achievements</a></li>
-				</ul>
-			</nav>
-		</header>
+<body>
 
-		<div class='Home'>
-			<img id="profile" src="images/0.jpg" alt="profile_picture" style="cursor:pointer" onclick="$(this).finish();changePhoto()"
-			 title="Loves french fries." />
-			<p class="hi">Hi, I am</p>
-			<p id="name">Shashank Shirol</p>
-			<p id="content">Computer Science and Engineering, MIT Manipal '21</p>
-		</div>
+<!-- Add your content of header -->
+<div class="background-color-layer" style="background-image: url('assets/images/img-01.jpg');"
+></div>
+<main class="content-wrapper">
+  <header class="white-text-container section-container">
+    <div class="text-center">
+      <h1>I am Shashank Shirol</h1>
+      <p>Computer Science and Engineering, MIT Manipal '21</p>
+      <p>Student | Researcher | Memer</p>
+      <p>
+        <a class="fa-icon fa-icon-2x" id = "icons" href="https://www.facebook.com/shashank.shirol.1" title="Facebook"
+          target="_blank">
+          <i class="fa fa-facebook"></i>
+        </a>
+        <a class="fa-icon fa-icon-2x" id = "icons" href="https://github.com/shashankshirol" title="GitHub" target="_blank">
+          <i class="fa fa-github"></i>
+        </a>
+        <a class="fa-icon fa-icon-2x" id = "icons" href="https://www.linkedin.com/in/shashankshirol/" title="LinkedIn"
+          target="_blank">
+          <i class="fa fa-linkedin"></i>
+        </a>
+        <a class="fa-icon fa-icon-2x" id = "icons" href="mailto:shashank.shirol1@gmail.com" title="Email" target="_blank">
+          <i class="fa fa-envelope"></i>
+        </a>
+      </p>
+    </div>
+  </header>
 
-		<footer>
-			<hr style="border: 0; width: 50%; height: 1px; background-image: linear-gradient(to right, rgba(255, 255, 255, 0), #ffffff, rgba(255, 255, 255, 0));">
-			<nav class="link-class">
-				<a class="fa fa-github" href="https://github.com/PonderfulWoop" target='_blank' title="GitHub" onclick="this.blur()"></a>
-				<a class="fa fa-linkedin" href="https://www.linkedin.com/in/shashankshirol/" target='_blank' title="LinkedIn" onclick="this.blur()"></a>
-				<a class="fa fa-envelope" href="mailto:shashank.shirol1@gmail.com" target='_blank' title="Email" onclick="this.blur()"></a>
-				<a class="fa fa-facebook" href="https://www.facebook.com/shashank.shirol.1" target="_blank" title="Facebook" onclick="this.blur()"></a>
-			</nav>
-			<p>
-				Copyright &copy; 2019 Shashank Shirol All Rights Reserved.
-			</p>
-		</footer>
-	</div>
-</body>
+
+
+<!-- Add your site or app content here -->
+ 
+ <div class="container">
+   <div class="row">
+     <div class="col-xs-12">
+
+        <div class="card">
+          <div class="card-block">
+            <h2>About me</h2>
+            <div class="row">
+              <div class="col-md-4">
+                <p><img src="./assets/images/img-01.jpg" class="img-responsive" alt=""></p>
+              </div>
+              <div class="col-md-8">
+
+              <p>I am a Developer, a Runner, and an avid reader. I also enjoy playing video games, discussing new
+                technology, watching anime, and talking about space exploration. I am an aspiring computer scientist and
+                one day hope to work as an independent researcher. My chief interests lie in Computer Vision and its
+                applications, Machine learning, and automating processes using programming.</p>
+                <p>You can look up few of my past Projects under the Projects tab, and request my detailed resumé by sending me an e-mail.</p>
+                <p><img src="images/undersign.png" class="img-responsive" alt="sign"></p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-block">
+            <h2>Education</h2>
+            <div class="row">
+
+              <div class="col-md-6">
+                <div class="education-experience">
+                  <small class="date">2017-2021</small>
+                  <h3 class="h5 date-title">B. Tech in Computer Science</h3>
+                  <p>Manipal Institute of Technology, Manipal</p>
+                  <p>Cumulative GPA: 9.35/10</p>
+                </div>
+
+              </div>
+
+              <div class="col-md-6">
+                <div class="education-experience">
+                  <small class="date">2015-2017</small>
+                  <h3 class="h5 date-title">High School Diploma (CBSE)</h3>
+                  <p>Bharati Vidyapeeth Higher Secondary School, Pune</p>
+                  <p>Percentage: 93.6% (1st in Graduating class)</p>
+                </div>
+              </div>
+
+
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-block">
+            <h2>Work Experience</h2>
+            <div class="work-experience">
+              <small class="date">May 2019 - July 2019</small>
+              <h3 class="h5 date-title">Summer Research Intern</h3>
+              <p>Worked on Crowd Scene Analysis under Prof. Dr. Karunakar A Kotegar and PhD Scholar Mr. Abhilash K Pai.
+                Studied the various aspects of crowd counting and refined a patch-based crowd-classification model by
+                leveraging Image Processing techniques, and Deep Learning.</p>
+              <p>As a part of my research work here, I refined a patch-based crowd classification algorithm by
+                experimenting with different patch sizes, classification models, and feature extractors and
+                descriptors (SURF, SIFT, ORB, AKAZE, KAZE, etc.) achieving an accuracy of 92% on the validation set.
+                The program is built upon the bag of words concept that is prominent in Natural Language Processing
+                (NLP).</p>
+            </div>
+
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-block">
+            <h2>Projects (Most Recent)</h2>
+            <div class="row">
+
+              <div class="col-md-4">
+                <a href="https://github.com/shashankshirol/FamCall" target="_blank"><img src="images/famcall.png"
+                    class="img-thumbnail" alt="FamCall Logo" style="width: 196px; height: 196px;"></a>
+                <h3 class="h5">FamCall</h3>
+                <p>Nov 2019</p>
+              </div>
+
+              <div class="col-md-4">
+                <a href="https://github.com/akshatha-k/Code.fun.do.2019" target="_blank"><img src="images/SEVAM.jpeg"
+                    class="img-thumbnail" alt="SEVAM" style="width: 196px; height: 196px;"></a>
+                <h3 class="h5">SEVAM - Secure Electronic Voting & Authentication Machine</h3>
+                <p>Oct 2019</p>
+              </div>
+
+              <div class="col-md-4">
+                <a href="https://github.com/shashankshirol/Library-Management-System" target="_blank"><img
+                    src="images/lib.png" class="img-thumbnail" alt="LMS" style="width: 196px; height: 196px;"></a>
+                <h3 class="h5">Library Management System</h3>
+                <p>Apr 2019</p>
+              </div>
+
+              <div class="col-md-12">
+              	<h3 class="h5">Other notable projects:</h3>
+              	<dl class="row">
+			  		<dt class="col-sm-4"><a href="https://play.google.com/store/apps/details?id=com.chemgame.shan.chemx&hl=en_US" target="_blank">ChemX</a></dt>
+			  			<dd class="col-sm-8">A Chemistry Quiz-based game developed during the 2017 summer break, the app currently has 500+ downloads on Google Play Store. The app was inspired from the PC version that I made in 2015.</dd>
+
+			  		<dt class="col-sm-4"><a href="http://www.codeskulptor.org/#user44_LxPYsiFnCZUHSsw.py">Pong</a></dt>
+			  			<dd class="col-sm-8">Coded a fully functional multiplayer ping-pong game on the CodeSkulptor platform that is based on Python.</dd>
+
+			  		<dt class="col-sm-4"><a href="http://www.codeskulptor.org/#user45_h5gQRLf8d7FfBhM.py">Asteroids</a></dt>
+			  			<dd class="col-sm-8">Coded a graphically enhanced version of the 1979 Atari game, Asteroids. This version was coded on the CodeSkulptor platform based on Pyhton</dd>
+
+			  		<dt class="col-sm-4"><a href="https://github.com/PonderfulWoop/mitFiles-Downloader">mitFiles-Downloader</a></dt>
+			  			<dd class="col-sm-8">A python CLI application to download files off a private repo(now defunct) of tutorials, books, assignments etc.</dd>
+			  	</dl>
+              </div>
+
+              <div class="col-md-12">
+                <h3 class="h5" style="position: absolute; right: 0%;">Find more on my <u><a
+                    href="https://github.com/shashankshirol?tab=repositories" target="_blank">GitHub</a></u></h3>
+              </div>
+
+            </div>
+          </div>
+        </div>
+        
+        <div class="card">
+          <div class="card-block">
+            <h2>Language</h2>
+            <div class="row">
+              <div class="col-md-3">
+                <div class="language-experience">
+                  <h3 class="h5">English  <small>Fluent</small></h3>
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="language-experience">
+                  <h3 class="h5">Hindi  <small>Fluent</small></h3>
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="language-experience">
+                  <h3 class="h5">Marathi  <small>Fluent</small></h3>
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="language-experience">
+                  <h3 class="h5">Kannada <small>Fluent</small></h3>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-block">
+            <h2>Academic Accolades</h2>
+            
+            <dl class="row">
+			  <dt class="col-sm-4">Certificate of Merit and a medal</dt>
+			  	<dd class="col-sm-8">For academic excellence at Manipal Institute of Technology, Manipal (Dean's List)</dd>
+
+			  <dt class="col-sm-4">Certificate of Merit and a cash prize</dt>
+			  	<dd class="col-sm-8">For being the best outgoing student and maintaining excellent academic record while at Bharati Vidyapeeth Higher Secondary School, Pune.</dd>
+			</dl>
+
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-block">
+            <h2>Skills</h2>
+            
+            <dl class="row">
+			  <dt class="col-sm-4">Languages</dt>
+			  	<dd class="col-sm-8">Java, C/C++, Python, Verilog, Javascript, Matlab/Octave, SQL.</dd>
+
+			  <dt class="col-sm-4">Web Technologies</dt>
+			  	<dd class="col-sm-8">XML, HTML5, CSS, jQuery, Bootstrap.</dd>
+
+			  <dt class="col-sm-4">Experience working with</dt>
+			  	<dd class="col-sm-8">REST APIs, Scikit-learn, Pandas, Scipy, Tensorflow, Keras, OpenCV.</dd>
+			</dl>
+
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-block">
+            <h2>Certifications</h2>
+            
+            <dl class="row">
+
+			  <dt class="col-sm-4">Algorithmic Toolbox</dt>
+			  	<dd class="col-sm-8">by University of California San Diego on Coursera.</dd>
+
+			  <dt class="col-sm-4">Natural Language Processing in Tensorflow</dt>
+			  	<dd class="col-sm-8">by deeplearning.ai on Coursera.</dd>
+
+			  <dt class="col-sm-4">Intro. to Tensorflow for AI, ML, and DL</dt>
+			  	<dd class="col-sm-8">by deeplearning.ai on Coursera.</dd>
+
+			  <dt class="col-sm-4">Applied Machine Learning in Python</dt>
+			  	<dd class="col-sm-8">by University of Michigan on Coursera</dd>
+
+			  <dt class="col-sm-4">Intro. to Data Science in Python</dt>
+			  	<dd class="col-sm-8">by University of Michigan on Coursera.</dd>
+
+			  <dt class="col-sm-4">Data Collection and Processing in Python</dt>
+			  	<dd class="col-sm-8">by University of Michigan on Coursera.</dd>
+
+			  <dt class="col-sm-4">Machine Learning</dt>
+			  	<dd class="col-sm-8">by Stanford University on Coursera.</dd>
+
+			  <dt class="col-sm-4">Interactive Programming in Python</dt>
+			  	<dd class="col-sm-8">A two-course program by Rice University on Coursera</dd>
+
+			  <dt class="col-sm-4">Web Design Specialization</dt>
+			  	<dd class="col-sm-8">A five-course specialization program by University of Michigan on Coursera</dd>
+
+			  <dt class="col-sm-4">A Crash Course in Data Science</dt>
+			  	<dd class="col-sm-8">by Johns Hopkins University on Coursera.</dd>
+
+			  <dt class="col-sm-4">Mathematical Thinking in Computer Science</dt>
+			  	<dd class="col-sm-8">by UC San Diego & National Research University Higher School of Economics on Coursera</dd>
+
+			</dl>
+
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-block">
+            <h2>Other Social Network</h2>
+            <div class="row">
+
+              <div class="col-md-6">
+                <p class="social-buttons"><a href="https://twitter.com/shashank080" target="_blank"><span class="social-round-icon fa-icon"><i class="fa fa-twitter"></i></span>@shashank080</a></p>
+              </div>
+
+              <div class="col-md-6">
+                <p class="social-buttons"><a href="https://www.instagram.com/ponderful_woop/" target="_blank"><span class="social-round-icon fa-icon"><i class="fa fa-instagram"></i></span>@ponderful_woop</a></p>
+              </div>
+             
+            </div>
+          </div>
+        </div>
+
+     </div>
+   </div>
+ </div>
+
+</main>
+<footer class="footer-container white-text-container text-center">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12">
+        <p><img src="images/logo.png" alt="$" style="width: 32px; height: 32px;"></p>
+        <p>Made with <span id="heart" style="font-size: 24px; color: #e74c3c;">&hearts;</span> by Shashank Shirol</p>
+        <p>Copyright &copy; 2019 Shashank Shirol All Rights Reserved.</p>
+        <p>
+          <a class="fa-icon fa-icon-2x" id = "icons" href="https://www.facebook.com/shashank.shirol.1" title="Facebook" target="_blank">
+            <i class="fa fa-facebook"></i>
+          </a>
+          <a class="fa-icon fa-icon-2x" id = "icons" href="https://github.com/shashankshirol" title="GitHub" target="_blank">
+            <i class="fa fa-github"></i>
+          </a>
+          <a class="fa-icon fa-icon-2x" id = "icons" href="https://www.linkedin.com/in/shashankshirol/" title="LinkedIn"
+            target="_blank">
+            <i class="fa fa-linkedin"></i>
+          </a>
+          <a class="fa-icon fa-icon-2x" id = "icons" href="mailto:shashank.shirol1@gmail.com" title="Email" target="_blank">
+            <i class="fa fa-envelope"></i>
+          </a>
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function (event) {
+     scrollRevelation('.card');
+  });
+</script>
+
+
+<script type="text/javascript" src="./main.bc58148c.js"></script></body>
 
 </html>
