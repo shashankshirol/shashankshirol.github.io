@@ -1,0 +1,91 @@
+---
+import { render } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import { getPosts, formatDate } from '../../data/posts';
+
+export async function getStaticPaths() {
+  const posts = await getPosts();
+  return posts.map((post) => ({ params: { id: post.id }, props: { post } }));
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+---
+
+<Base title={post.data.title} description={post.data.description}>
+  <article>
+    <header>
+      <time datetime={post.data.date.toISOString()}>{formatDate(post.data.date)}</time>
+      <h1>{post.data.title}</h1>
+    </header>
+    <div class="prose">
+      <Content />
+    </div>
+    <p class="back"><a href="/writing/">All writing</a></p>
+  </article>
+</Base>
+
+<style>
+  article {
+    max-width: 42rem;
+    padding-top: clamp(1rem, 4vw, 3rem);
+  }
+
+  time {
+    font-family: var(--display);
+    font-size: var(--step--1);
+    color: var(--muted);
+  }
+
+  h1 {
+    font-size: clamp(2.25rem, 6vw, 3.75rem);
+    letter-spacing: -0.03em;
+    line-height: 1;
+    margin-block: 0.5rem 2.5rem;
+  }
+
+  .prose {
+    font-size: 1.125rem;
+    line-height: 1.7;
+  }
+
+  .prose :global(* + *) {
+    margin-top: 1.2em;
+  }
+
+  .prose :global(h2) {
+    font-size: var(--step-2);
+    margin-top: 2em;
+  }
+
+  .prose :global(h3) {
+    font-size: var(--step-1);
+    margin-top: 1.75em;
+  }
+
+  .prose :global(li + li) {
+    margin-top: 0.4em;
+  }
+
+  .prose :global(blockquote) {
+    padding-left: 1.25rem;
+    border-left: 3px solid var(--marigold);
+    font-style: italic;
+  }
+
+  .prose :global(code) {
+    font-size: 0.875em;
+  }
+
+  .prose :global(pre) {
+    padding: 1rem 1.25rem;
+    border-radius: 0.5rem;
+    overflow-x: auto;
+    line-height: 1.5;
+  }
+
+  .back {
+    margin-top: 4rem;
+    font-family: var(--display);
+  }
+</style>

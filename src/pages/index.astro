@@ -1,0 +1,352 @@
+---
+import { Image } from 'astro:assets';
+import Base from '../layouts/Base.astro';
+import portrait from '../assets/portrait.jpg';
+import signature from '../assets/signature.png';
+import osttra from '../assets/osttra.png';
+import { getProjects } from '../lib/github';
+import {
+  profile,
+  experience,
+  education,
+  skills,
+  links,
+  type Entry,
+} from '../data/cv';
+
+const { newest, mostStarred, languages } = await getProjects();
+const projectGroups = [
+  { heading: 'Newest', projects: newest },
+  { heading: 'Most starred', projects: mostStarred },
+].filter((g) => g.projects.length > 0);
+const skillRows = [{ name: 'Languages', items: languages.join(', ') }, ...skills].filter((s) => s.items);
+
+// The headline shows the OSTTRA logo in place of the word. The logo is drawn as a
+// mask so it takes the text colour in both light and dark mode.
+const [beforeLogo, afterLogo] = profile.summary.split('OSTTRA');
+const logoMask = `url(${osttra.src})`;
+
+const timelines: { id: string; heading: string; entries: Entry[] }[] = [
+  { id: 'experience', heading: 'Experience', entries: experience },
+  { id: 'education', heading: 'Education', entries: education },
+];
+---
+
+<Base showHomeLink={false}>
+  <section class="hero">
+    <h1 class="name">
+      {profile.name.split(' ').map((word) => <span>{word} </span>)}
+    </h1>
+    <p class="summary">
+      {beforeLogo}{afterLogo !== undefined && (
+        <span class="logo" role="img" aria-label="OSTTRA" style={`--logo: ${logoMask}`} />
+      )}{afterLogo}
+    </p>
+  </section>
+
+  <section class="band" aria-labelledby="about">
+    <h2 id="about">About</h2>
+    <div class="about">
+      <div class="portrait">
+        <Image src={portrait} alt="Shashank in a denim shirt and clear-framed glasses" width={500} height={500} loading="eager" />
+      </div>
+      <div class="about-text">
+        {profile.about.map((p) => <p>{p}</p>)}
+        <Image class="signature" src={signature} alt="" width={160} height={160} />
+      </div>
+    </div>
+  </section>
+
+  {
+    timelines.map(({ id, heading, entries }) => (
+      <section class="band" aria-labelledby={id}>
+        <h2 id={id}>{heading}</h2>
+        <ol class="entries">
+          {entries.map((e) => (
+            <li class="entry">
+              <p class="dates">{e.dates}</p>
+              <div>
+                <h3>{e.title}</h3>
+                {e.place && <p class="place">{e.place}</p>}
+                {e.body?.map((p) => <p set:html={p} />)}
+                {e.points && <ul>{e.points.map((p) => <li>{p}</li>)}</ul>}
+              </div>
+            </li>
+          ))}
+        </ol>
+      </section>
+    ))
+  }
+
+  <section class="band" aria-labelledby="projects">
+    <h2 id="projects">Projects</h2>
+    <div>
+      {
+        projectGroups.map((group) => (
+          <div class="group">
+            <h3>{group.heading}</h3>
+            <dl class="pairs">
+              {group.projects.map((p) => (
+                <>
+                  <dt>
+                    <a href={p.href}>{p.name}</a>
+                  </dt>
+                  <dd>
+                    {p.description}
+                    {(p.languages.length > 0 || p.stars > 0) && (
+                      <p class="meta">
+                        {p.languages.join(', ')}
+                        {p.stars > 0 && <span>{p.stars} {p.stars === 1 ? 'star' : 'stars'} on GitHub</span>}
+                      </p>
+                    )}
+                  </dd>
+                </>
+              ))}
+            </dl>
+          </div>
+        ))
+      }
+      <p class="more">
+        <a href="https://github.com/shashankshirol?tab=repositories">See all repositories on GitHub</a>
+      </p>
+    </div>
+  </section>
+
+  <section class="band" aria-labelledby="skills">
+    <h2 id="skills">Skills</h2>
+    <dl class="pairs">
+      {
+        skillRows.map((s) => (
+          <>
+            <dt>{s.name}</dt>
+            <dd>{s.items}</dd>
+          </>
+        ))
+      }
+    </dl>
+  </section>
+
+  <section class="band" aria-labelledby="elsewhere">
+    <h2 id="elsewhere">Elsewhere</h2>
+    <ul class="links">
+      <li><a href={`mailto:${profile.email}`}>{profile.email}</a></li>
+      {links.map((l) => <li><a href={l.href} rel="me">{l.name}</a></li>)}
+    </ul>
+  </section>
+</Base>
+
+<style>
+  .hero {
+    padding-block: clamp(1rem, 4vw, 3rem) clamp(3rem, 8vw, 6rem);
+  }
+
+  .name {
+    font-size: clamp(4.25rem, 19.5vw, 17.5rem);
+    font-weight: 700;
+    line-height: 0.82;
+    letter-spacing: -0.045em;
+    margin-left: -0.05em;
+    padding-block: 0.06em 0.12em;
+  }
+
+  .name span {
+    display: block;
+  }
+
+  .logo {
+    display: inline-block;
+    height: 0.7em;
+    aspect-ratio: 800 / 192;
+    background: currentColor;
+    -webkit-mask: var(--logo) center / contain no-repeat;
+    mask: var(--logo) center / contain no-repeat;
+  }
+
+  .summary {
+    margin-top: 2.5rem;
+    font-size: var(--step-2);
+    line-height: 1.35;
+  }
+
+  /* A band is one CV section: heading in the left rail, content beside it. */
+  .band {
+    display: grid;
+    grid-template-columns: var(--rail) minmax(0, 46rem);
+    column-gap: clamp(1.5rem, 4vw, 4rem);
+    padding-block: 2.75rem;
+    border-top: 1px solid var(--rule);
+  }
+
+  .band > h2 {
+    font-size: 1.75rem;
+    letter-spacing: -0.025em;
+    font-weight: 700;
+    position: sticky;
+    top: 1.5rem;
+    align-self: start;
+  }
+
+  .about {
+    display: grid;
+    grid-template-columns: 12rem minmax(0, 1fr);
+    gap: 2rem;
+    align-items: start;
+  }
+
+  .portrait {
+    background: var(--panel);
+    border-radius: 6rem 6rem 0.5rem 0.5rem;
+    overflow: hidden;
+  }
+
+  /* The studio photo has a white backdrop; multiply lets the panel colour through. */
+  .portrait img {
+    mix-blend-mode: multiply;
+  }
+
+  .about-text p + p {
+    margin-top: 1em;
+  }
+
+  .signature {
+    filter: invert(var(--invert));
+    width: 9rem;
+    margin: -1.5rem 0 -2.5rem -0.5rem;
+  }
+
+
+  .entries {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    gap: 2.5rem;
+  }
+
+  .entry {
+    display: grid;
+    grid-template-columns: 10.5rem minmax(0, 1fr);
+    column-gap: 1.5rem;
+  }
+
+  .dates {
+    font-family: var(--display);
+    font-size: var(--step--1);
+    font-variant-numeric: tabular-nums;
+    color: var(--muted);
+    padding-top: 0.3rem;
+  }
+
+  .entry h3 {
+    font-size: 1.125rem;
+    font-weight: 700;
+  }
+
+  .place {
+    font-family: var(--display);
+    color: var(--muted);
+    margin-bottom: 0.625rem;
+  }
+
+  .entry div > p + p {
+    margin-top: 0.75em;
+  }
+
+  .entry ul {
+    padding-left: 1.1em;
+  }
+
+  .entry li::marker {
+    color: var(--muted);
+  }
+
+  .pairs {
+    display: grid;
+    grid-template-columns: 10.5rem minmax(0, 1fr);
+    gap: 1rem 1.5rem;
+  }
+
+  .pairs dt {
+    font-family: var(--display);
+    font-weight: 700;
+  }
+
+  .group + .group {
+    margin-top: 2.5rem;
+  }
+
+  .group h3 {
+    font-size: var(--step-0);
+    font-weight: 400;
+    color: var(--muted);
+    margin-bottom: 1rem;
+  }
+
+  .meta {
+    margin-top: 0.25rem;
+    font-family: var(--display);
+    font-size: var(--step--1);
+    color: var(--muted);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0 1.25rem;
+  }
+
+  .more {
+    margin-top: 2rem;
+    font-family: var(--display);
+  }
+
+  .links {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem 1.75rem;
+    font-family: var(--display);
+    font-size: var(--step-1);
+  }
+
+  @media (max-width: 56rem) {
+    .band {
+      grid-template-columns: minmax(0, 1fr);
+      row-gap: 1.5rem;
+    }
+
+    .band > h2 {
+      position: static;
+    }
+  }
+
+  @media (max-width: 36rem) {
+    .about,
+    .entry,
+    .pairs {
+      grid-template-columns: minmax(0, 1fr);
+    }
+
+    .about {
+      gap: 1.5rem;
+    }
+
+    .portrait {
+      width: 11rem;
+    }
+
+    .entry {
+      row-gap: 0.25rem;
+    }
+
+    .pairs {
+      row-gap: 0.25rem;
+    }
+
+    .pairs dd + dt {
+      margin-top: 1rem;
+    }
+
+    .summary {
+      font-size: var(--step-1);
+    }
+  }
+</style>

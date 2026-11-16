@@ -1,0 +1,241 @@
+@import '@fontsource-variable/familjen-grotesk/wght.css';
+@import '@fontsource-variable/literata/wght.css';
+@import '@fontsource-variable/literata/wght-italic.css';
+
+:root {
+  color-scheme: light;
+  --invert: 0;
+
+  --chalk: #f3f5f8;
+  --washed: #c9d6e8;
+  --denim: #3d5a94;
+  --indigo: #16213f;
+  --marigold: #f0a21c;
+
+  --bg: var(--chalk);
+  --text: var(--indigo);
+  --muted: #55648a;
+  --link: var(--denim);
+  --rule: #d5dde9;
+  --panel: var(--washed);
+
+  --display: 'Familjen Grotesk Variable', 'Helvetica Neue', Arial, sans-serif;
+  --prose: 'Literata Variable', Georgia, 'Times New Roman', serif;
+
+  --step--1: 0.875rem;
+  --step-0: 1.0625rem;
+  --step-1: 1.25rem;
+  --step-2: 1.625rem;
+  --step-3: 2.25rem;
+
+  --gutter: clamp(1.25rem, 5vw, 4rem);
+  --rail: 11rem;
+}
+
+/* Dark theme. The script in Base.astro sets data-theme from the visitor's saved
+   choice or their system setting; the media query covers visitors without JavaScript. */
+:root[data-theme='dark'] {
+  color-scheme: dark;
+  --bg: #101830;
+  --text: #e8edf5;
+  --muted: #9aa8c7;
+  --link: #a9c0ea;
+  --rule: #26345a;
+  --invert: 1;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme]) {
+    color-scheme: dark;
+    --bg: #101830;
+    --text: #e8edf5;
+    --muted: #9aa8c7;
+    --link: #a9c0ea;
+    --rule: #26345a;
+    --invert: 1;
+  }
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--prose);
+  font-size: var(--step-0);
+  line-height: 1.65;
+  font-optical-sizing: auto;
+}
+
+::selection {
+  background: var(--marigold);
+  color: var(--indigo);
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--display);
+  line-height: 1.15;
+  letter-spacing: -0.015em;
+  margin: 0;
+  text-wrap: balance;
+}
+
+p,
+ul,
+ol,
+dl,
+dd,
+figure,
+blockquote {
+  margin: 0;
+}
+
+a {
+  color: var(--link);
+  text-decoration-thickness: 0.06em;
+  text-underline-offset: 0.2em;
+}
+
+a:hover {
+  text-decoration-color: var(--marigold);
+  text-decoration-thickness: 0.14em;
+}
+
+:focus-visible {
+  outline: 3px solid var(--marigold);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+.wrap {
+  padding-inline: var(--gutter);
+  max-width: 82rem;
+  margin-inline: auto;
+}
+
+/* Site header and footer */
+
+.site-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 1.5rem;
+  padding-block: 1.5rem;
+  font-family: var(--display);
+  font-size: var(--step-0);
+}
+
+.site-header a {
+  color: var(--text);
+  text-decoration: none;
+}
+
+.site-header a:hover,
+.site-header a[aria-current='page'] {
+  text-decoration: underline;
+  text-decoration-color: var(--marigold);
+  text-decoration-thickness: 0.14em;
+}
+
+.site-header .home {
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+@media (max-width: 30rem) {
+  .site-header {
+    font-size: var(--step--1);
+    gap: 1rem;
+  }
+
+  .site-header nav ul {
+    gap: 0.875rem;
+  }
+}
+
+.site-header ul {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  list-style: none;
+  padding: 0;
+}
+
+.theme-toggle {
+  display: grid;
+  place-items: center;
+  width: 2rem;
+  height: 2rem;
+  margin: -0.5rem;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: none;
+  color: var(--text);
+  cursor: pointer;
+}
+
+/* Stays hidden until the script is running, since it does nothing without it. */
+.theme-toggle[hidden] {
+  display: none;
+}
+
+.theme-toggle:hover {
+  color: var(--marigold);
+}
+
+.theme-toggle svg {
+  width: 1.125rem;
+  height: 1.125rem;
+}
+
+.site-footer {
+  margin-top: 6rem;
+  padding-block: 2rem 3rem;
+  border-top: 1px solid var(--rule);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 0.5rem 2rem;
+  font-family: var(--display);
+  font-size: var(--step--1);
+  color: var(--muted);
+}
+
+.skip {
+  position: absolute;
+  left: -100vw;
+}
+
+.skip:focus {
+  left: var(--gutter);
+  top: 0.75rem;
+  background: var(--bg);
+  padding: 0.25rem 0.5rem;
+  z-index: 10;
+}
