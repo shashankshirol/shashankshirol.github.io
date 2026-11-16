@@ -1,0 +1,3 @@
+# Local-only settings for `npm run worker`. Copy to .dev.vars.
+# Any valid address works for seeing the 402 response locally.
+PAY_TO=0x000000000000000000000000000000000000dEaD

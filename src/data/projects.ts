@@ -37,7 +37,15 @@ export const overrides: Record<string, { name?: string; description?: string }> 
 };
 
 // Things GitHub reports as languages that should not show up under Skills.
-export const ignoredLanguages = ['Jupyter Notebook', 'Makefile', 'Dockerfile', 'Batchfile'];
+export const ignoredLanguages = [
+  'Jupyter Notebook',
+  'Makefile',
+  'Dockerfile',
+  'Batchfile',
+  'Kotlin',
+  'MATLAB',
+  'CSS',
+];
 
 // How many languages to show beside each project.
 export const languagesPerProject = 3;

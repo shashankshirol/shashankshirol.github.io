@@ -1,0 +1,28 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "shashankshirol",
+  "main": "worker/index.ts",
+  "compatibility_date": "2026-11-01",
+  "compatibility_flags": ["nodejs_compat"],
+
+  // The built Astro site. Only /writing/ goes through the Worker; everything
+  // else is served straight from here.
+  "assets": {
+    "directory": "./dist",
+    "binding": "ASSETS",
+    "run_worker_first": ["/writing/*"],
+    "html_handling": "auto-trailing-slash",
+    "not_found_handling": "404-page"
+  },
+
+  "vars": {
+    // Your wallet's PUBLIC address. Leave empty to switch the paywall off.
+    "PAY_TO": "",
+    // Testnet (play money): eip155:84532 with https://x402.org/facilitator
+    // Mainnet (real USDC):  eip155:8453 with a production facilitator such as
+    //                       https://facilitator.payai.network
+    "NETWORK": "eip155:84532",
+    "FACILITATOR_URL": "https://x402.org/facilitator",
+    "PRICE": "$0.01"
+  }
+}
